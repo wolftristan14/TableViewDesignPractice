@@ -8,7 +8,7 @@
 
 import UIKit
 import SwiftyJSON
-//import Alamofire
+import ChameleonFramework
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -144,6 +144,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
 
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cellToSelect:UITableViewCell = tableView.cellForRow(at: indexPath) ?? tableView.cellForRow(at: IndexPath(row: 0, section: 0))!
+        cellToSelect.contentView.backgroundColor = UIColor.flatBlackDark
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cellToDeSelect:UITableViewCell = tableView.cellForRow(at: indexPath) ?? tableView.cellForRow(at: IndexPath(row: 0, section: 0))!
+        cellToDeSelect.contentView.backgroundColor = UIColor.flatBlack
+    }
 
 
 }

@@ -7,5 +7,6 @@ target 'FancyTableView' do
 
   # Pods for FancyTableView
   pod 'SwiftyJSON'
+  pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 
 end
