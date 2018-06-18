@@ -139,9 +139,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         image = imageArray[indexPath.row]
         
-        //cell.layer.borderWidth = 2.0
-        //cell.layer.borderColor = UIColor.gray.cgColor
-        cell.layer.cornerRadius = 8.0
+        cell.layer.borderWidth = 6.0
+        cell.layer.borderColor = UIColor.flatBlack.cgColor
+        cell.layer.cornerRadius = 20.0
         cell.mainImageView.image = image.image
         cell.textView.text = image.imageTitle
 
