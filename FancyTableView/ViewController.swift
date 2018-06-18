@@ -139,7 +139,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         image = imageArray[indexPath.row]
         
-        cell.layer.borderWidth = 6.0
+        cell.layer.borderWidth = 5.0
         cell.layer.borderColor = UIColor.flatBlack.cgColor
         cell.layer.cornerRadius = 20.0
         cell.mainImageView.image = image.image
@@ -151,7 +151,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedCell = tableView.cellForRow(at: indexPath) ?? tableView.cellForRow(at: IndexPath(row: 0, section: 0))!
-        selectedCell.contentView.backgroundColor = UIColor.flatBlackDark
+        selectedCell.contentView.backgroundColor = UIColor.flatTealDark
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
