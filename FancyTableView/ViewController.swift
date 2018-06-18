@@ -28,8 +28,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var imageArray = [Image]()
     var image: Image!
     
+    
     // make a cell with a strong reference at the start so it doesnt get deallocated
-    var selectedCell = UITableViewCell()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -139,6 +141,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         image = imageArray[indexPath.row]
         
+        print("indexPath.row:\(indexPath.row)")
         cell.layer.borderWidth = 5.0
         cell.layer.borderColor = UIColor.flatBlack.cgColor
         cell.layer.cornerRadius = 20.0
@@ -151,19 +154,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedCell = tableView.cellForRow(at: indexPath)!
+        print("selectindexpath:\(indexPath)")
+
+        let selectedCell = tableView.cellForRow(at: indexPath)!
         selectedCell.contentView.backgroundColor = UIColor.flatTealDark
     }
     
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        selectedCell = tableView.cellForRow(at: indexPath)!
-        selectedCell.contentView.backgroundColor = UIColor.flatBlack
-    }
+//    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+//        print("deselectindexpath:\(indexPath)")
+//        var deselectedCell = tableView.cellForRow(at: indexPath)!
+//        deselectedCell.contentView.backgroundColor = UIColor.flatBlack
+//    }
     
-    func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
-        print("ye")
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let deselectedCell = tableView.cellForRow(at: indexPath)!
+        deselectedCell.contentView.backgroundColor = UIColor.flatBlack
     }
+
+
     
 
 
