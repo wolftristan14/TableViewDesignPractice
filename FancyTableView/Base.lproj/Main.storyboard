@@ -31,10 +31,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hmX-uG-Nhe" customClass="ImageViewStyleManager" customModule="FancyTableView" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="11" width="355" height="254.5"/>
+                                                    <rect key="frame" x="10" y="11" width="355" height="241.5"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rF2-yc-91K">
-                                                    <rect key="frame" x="15" y="277" width="42" height="19"/>
+                                                    <rect key="frame" x="15" y="264" width="42" height="19"/>
                                                     <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -42,7 +42,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="hmX-uG-Nhe" secondAttribute="trailing" constant="10" id="ARK-9C-Rzs"/>
-                                                <constraint firstAttribute="bottom" secondItem="rF2-yc-91K" secondAttribute="bottom" constant="11.5" id="PrC-nJ-HTy"/>
+                                                <constraint firstAttribute="bottom" secondItem="rF2-yc-91K" secondAttribute="bottom" constant="25" id="PrC-nJ-HTy"/>
                                                 <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="rF2-yc-91K" secondAttribute="trailing" id="RsC-8w-59r"/>
                                                 <constraint firstItem="rF2-yc-91K" firstAttribute="leading" secondItem="sBx-zB-hg2" secondAttribute="leadingMargin" id="jTH-dd-G15"/>
                                                 <constraint firstItem="hmX-uG-Nhe" firstAttribute="top" secondItem="sBx-zB-hg2" secondAttribute="top" constant="11" id="vgk-Wp-nUK"/>

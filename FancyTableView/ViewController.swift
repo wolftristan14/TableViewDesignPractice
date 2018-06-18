@@ -37,11 +37,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        displayImage()
 
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        displayImage()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,7 +52,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     
-    func urlToImageView(imageString: String, imageTitle: String) {
+    func urlToImageView(imageString: String, imageTitle: String, indexPath: IndexPath) {
        // DispatchQueue.global(qos: .userInteractive).async {
             let url = URL(string: imageString)
             do {
@@ -59,12 +60,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let image = UIImage(data: imageData)
                 let imageObject = Image.init(image: image!, imageTitle: imageTitle)
                 self.imageArray.append(imageObject)
-                
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
-                    //self.imageView.image = image
-
-                    // put image somewhere
+                    print("tableviewrowcount:\(String(describing: self.tableView.cellForRow(at: indexPath)))")
                 }
             } catch {
                 //self.urlToImageView(imageString: imageString)
@@ -105,13 +103,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 } else if let data = data,
                     let response = response as? HTTPURLResponse,
                     response.statusCode == 200 {
-                        //var json:JSON = JSON(data)
                     var counter = 0
                     
                     while counter < 20 {
                          let innerJson = JSON(data)
                             //print("data:\(data)")
-                         print("innderjson\(innerJson)")
+                        // print("innderjson\(innerJson)")
                     var farm:String = innerJson["photos"]["photo"][counter]["farm"].stringValue
                             var server:String = innerJson["photos"]["photo"][counter]["server"].stringValue
                             var photoID:String = innerJson["photos"]["photo"][counter]["id"].stringValue
@@ -121,7 +118,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
                         var imageString:String = "http://farm\(farm).staticflickr.com/\(server)/\(photoID)_\(secret)_n.jpg/"
                         print("imageString\(imageString)")
-                        self.urlToImageView(imageString: imageString, imageTitle: title)
+                        let indexPath = IndexPath(row: counter, section: 0)
+                        self.urlToImageView(imageString: imageString, imageTitle: title, indexPath: indexPath)
                         counter += 1
                     }
                 }
@@ -132,6 +130,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return imageArray.count
     }
     
@@ -145,7 +144,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.layer.cornerRadius = 20.0
         cell.mainImageView.image = image.image
         cell.textView.text = image.imageTitle
-
+        
+        
         return cell
     }
 
@@ -160,6 +160,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         selectedCell = tableView.cellForRow(at: indexPath)!
         selectedCell.contentView.backgroundColor = UIColor.flatBlack
     }
+    
+    func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
+        print("ye")
+    }
+    
 
 
 }
