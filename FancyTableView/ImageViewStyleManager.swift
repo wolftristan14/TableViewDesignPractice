@@ -14,8 +14,8 @@ class ImageViewStyleManager: UIImageView {
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.layer.masksToBounds = true
-        self.layer.borderWidth = 2.0
-        self.layer.borderColor = UIColor.gray.cgColor
+        //self.layer.borderWidth = 2.0
+        //self.layer.borderColor = UIColor.gray.cgColor
         self.layer.cornerRadius = 8
     }
     

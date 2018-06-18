@@ -28,6 +28,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var imageArray = [Image]()
     var image: Image!
     
+    var selectedCell: UITableViewCell!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -138,6 +139,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         image = imageArray[indexPath.row]
         
+        //cell.layer.borderWidth = 2.0
+        //cell.layer.borderColor = UIColor.gray.cgColor
+        cell.layer.cornerRadius = 8.0
         cell.mainImageView.image = image.image
         cell.textView.text = image.imageTitle
 
@@ -146,13 +150,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cellToSelect:UITableViewCell = tableView.cellForRow(at: indexPath) ?? tableView.cellForRow(at: IndexPath(row: 0, section: 0))!
-        cellToSelect.contentView.backgroundColor = UIColor.flatBlackDark
+        selectedCell = tableView.cellForRow(at: indexPath) ?? tableView.cellForRow(at: IndexPath(row: 0, section: 0))!
+        selectedCell.contentView.backgroundColor = UIColor.flatBlackDark
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let cellToDeSelect:UITableViewCell = tableView.cellForRow(at: indexPath) ?? tableView.cellForRow(at: IndexPath(row: 0, section: 0))!
-        cellToDeSelect.contentView.backgroundColor = UIColor.flatBlack
+        selectedCell = tableView.cellForRow(at: indexPath) ?? tableView.cellForRow(at: IndexPath(row: 0, section: 0))!
+        selectedCell.contentView.backgroundColor = UIColor.flatBlack
     }
 
 
