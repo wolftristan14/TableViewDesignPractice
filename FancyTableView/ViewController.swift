@@ -28,7 +28,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var imageArray = [Image]()
     var image: Image!
     
-    var selectedCell: UITableViewCell!
+    // make a cell with a strong reference at the start so it doesnt get deallocated
+    var selectedCell = UITableViewCell()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -150,12 +151,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedCell = tableView.cellForRow(at: indexPath) ?? tableView.cellForRow(at: IndexPath(row: 0, section: 0))!
+        selectedCell = tableView.cellForRow(at: indexPath)!
         selectedCell.contentView.backgroundColor = UIColor.flatTealDark
     }
     
+    
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        selectedCell = tableView.cellForRow(at: indexPath) ?? tableView.cellForRow(at: IndexPath(row: 0, section: 0))!
+        selectedCell = tableView.cellForRow(at: indexPath)!
         selectedCell.contentView.backgroundColor = UIColor.flatBlack
     }
 
