@@ -28,6 +28,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var imageArray = [Image]()
     var image: Image!
     
+    var isCellHighlighted = Bool()
     
     // make a cell with a strong reference at the start so it doesnt get deallocated
     
@@ -157,7 +158,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         print("selectindexpath:\(indexPath)")
 
         let selectedCell = tableView.cellForRow(at: indexPath)!
-        selectedCell.contentView.backgroundColor = UIColor.flatTealDark
+        
+        if isCellHighlighted == true {
+        isCellHighlighted = false
+        selectedCell.contentView.backgroundColor = UIColor.flatBlack
+        } else if isCellHighlighted == false {
+        isCellHighlighted = true
+        selectedCell.contentView.backgroundColor = UIColor.flatNavyBlueDark
+        }
     }
     
     
